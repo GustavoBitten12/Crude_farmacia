@@ -1,19 +1,26 @@
 <?php
-class DatabaseMySQLi {
+class Database {
     private $host = "localhost";
+    private $db_name = "farmacia_vila_boa";
     private $username = "root";
     private $password = "";
-    private $database = "farmacia_vila_boa";
     public $conn;
 
     public function getConnection() {
-        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
-        
-        if ($this->conn->connect_error) {
-            die("Erro de conexão: " . $this->conn->connect_error);
+        $this->conn = null;
+        try {
+            $this->conn = new PDO(
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name, 
+                $this->username, 
+                $this->password
+            );
+            $this->conn->exec("set names utf8");
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo "Erro de conexão: " . $exception->getMessage();
         }
-        
         return $this->conn;
+        
     }
 }
 ?>
