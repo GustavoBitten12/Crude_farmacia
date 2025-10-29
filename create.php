@@ -42,7 +42,7 @@ if($_POST){
             <div class="col-md-8 mx-auto">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">📦 Cadastrar Novo Material</h4>
+                        <h4 class="mb-0">Cadastrar Novo Material</h4>
                     </div>
                     <div class="card-body">
                         
@@ -66,7 +66,7 @@ if($_POST){
                             </div>
 
                             <div class="mb-3">
-                                <label for="unidade" class="form-label">Unidade de Medida *</label>
+                                <label for="unidade" class="form-label">Unidade de Medida </label>
                                 <select class="form-select" id="unidade" name="unidade" required>
                                     <option value="">Selecione...</option>
                                     <option value="Unidade">Unidade</option>
@@ -82,19 +82,19 @@ if($_POST){
                             </div>
 
                             <div class="mb-3">
-                                <label for="estoque_atual" class="form-label">Estoque Atual *</label>
+                                <label for="estoque_atual" class="form-label">Estoque Atual </label>
                                 <input type="number" class="form-control" id="estoque_atual" name="estoque_atual" 
                                        required min="0" step="0.01" placeholder="0.00">
                             </div>
 
                             <div class="mb-3">
-                                <label for="preco" class="form-label">Preço Unitário (R$) *</label>
+                                <label for="preco" class="form-label">Preço Unitário (R$) </label>
                                 <input type="number" class="form-control" id="preco" name="preco" 
                                        required min="0" step="0.01" placeholder="0.00">
                             </div>
 
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-success btn-lg">💾 Cadastrar Material</button>
+                                <button type="submit" class="btn btn-success btn-lg">Cadastrar Material</button>
                             </div>
                         </form>
                     </div>

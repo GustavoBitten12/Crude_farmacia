@@ -16,7 +16,7 @@ class Material {
         $this->conn = $db;
     }
 
-    // CREATE 
+    
     public function criar() {
         $query = "INSERT INTO " . $this->table_name . 
                 " SET nome=:nome, descricao=:descricao, unidade=:unidade, 
@@ -24,14 +24,14 @@ class Material {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitização
+        
         $this->nome = htmlspecialchars(strip_tags($this->nome));
         $this->descricao = htmlspecialchars(strip_tags($this->descricao));
         $this->unidade = htmlspecialchars(strip_tags($this->unidade));
         $this->estoque_atual = htmlspecialchars(strip_tags($this->estoque_atual));
         $this->preco = htmlspecialchars(strip_tags($this->preco));
 
-        // Bind parameters
+        
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":descricao", $this->descricao);
         $stmt->bindParam(":unidade", $this->unidade);
@@ -44,7 +44,7 @@ class Material {
         return false;
     }
 
-    // READ listar
+   
     public function listar() {
         $query = "SELECT * FROM " . $this->table_name . " WHERE ativo = 1 ORDER BY nome ASC";
         $stmt = $this->conn->prepare($query);
@@ -52,7 +52,7 @@ class Material {
         return $stmt;
     }
 
-    // READ - Buscar materiais por nome
+   
     public function buscar($search) {
         $query = "SELECT * FROM " . $this->table_name . " 
                  WHERE ativo = 1 AND nome LIKE :search 
@@ -65,7 +65,7 @@ class Material {
         return $stmt;
     }
 
-    // READ - Ler um específico
+    
     public function lerUm() {
         $query = "SELECT * FROM " . $this->table_name . " 
                  WHERE id_material = ? LIMIT 0,1";
@@ -88,7 +88,7 @@ class Material {
         return false;
     }
 
-    // UPDATE - Atualizar material
+    
     public function atualizar() {
         $query = "UPDATE " . $this->table_name . 
                 " SET nome=:nome, descricao=:descricao, unidade=:unidade, 
@@ -97,7 +97,7 @@ class Material {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitização
+       
         $this->nome = htmlspecialchars(strip_tags($this->nome));
         $this->descricao = htmlspecialchars(strip_tags($this->descricao));
         $this->unidade = htmlspecialchars(strip_tags($this->unidade));
@@ -105,7 +105,7 @@ class Material {
         $this->preco = htmlspecialchars(strip_tags($this->preco));
         $this->id_material = htmlspecialchars(strip_tags($this->id_material));
 
-        // Bind parameters
+        
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":descricao", $this->descricao);
         $stmt->bindParam(":unidade", $this->unidade);
@@ -119,7 +119,7 @@ class Material {
         return false;
     }
 
-    // DELETE 
+    
     public function excluir() {
         $query = "UPDATE " . $this->table_name . " SET ativo = 0 WHERE id_material = ?";
         

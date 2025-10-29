@@ -53,7 +53,7 @@ if($_POST){
                     </div>
                     <div class="card-body">
                         
-                        <a href="read.php" class="btn btn-secondary mb-3">← Voltar para Lista</a>
+                        <a href="read.php" class="btn btn-secondary mb-3">Voltar para Lista</a>
 
                         
                         <?php echo $mensagem; ?>
